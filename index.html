@@ -1,0 +1,839 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>EMBOGO MOTEL. LUGALA-KIGOBE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a dark plum hero band lit like the dusk sign photo, pale content bands for rooms and facilities,
+   a booking card with a live stay summary beside it, and a plum contact band to close. */
+:root {
+  --display: 'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif;
+  --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'DM Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --bg: #f6f3f7;
+  --surface: #ffffff;
+  --surface-2: #ece6ef;
+  --fg: #1e1423;
+  --muted: #5d5163;
+  --line: #d9cfe0;
+  --accent: #6a2766;
+  --cta: #6a2766;
+  --cta-fg: #ffffff;
+  --felt: #1b6b57;
+  --danger: #a3262a;
+
+  --hero-bg: #1d0f22;
+  --hero-fg: #f6eef7;
+  --hero-muted: #cbb8cf;
+  --hero-line: #43304b;
+  --hero-field: #2b1a31;
+  --glow: #f0b03a;
+  --glow-fg: #2a1a00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #150d19; --surface: #1f1526; --surface-2: #2a1d33; --fg: #f2ebf4; --muted: #b9a8bf;
+    --line: #3a2b45; --accent: #d58bd0; --cta: #f0b03a; --cta-fg: #2a1a00; --felt: #4fc3a1; --danger: #ff8a8d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #150d19; --surface: #1f1526; --surface-2: #2a1d33; --fg: #f2ebf4; --muted: #b9a8bf;
+  --line: #3a2b45; --accent: #d58bd0; --cta: #f0b03a; --cta-fg: #2a1a00; --felt: #4fc3a1; --danger: #ff8a8d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.6 var(--body);
+  -webkit-text-size-adjust: 100%;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 60; background: var(--hero-bg);
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; letter-spacing: -0.02em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.site-header :focus-visible, .hero :focus-visible, .contact :focus-visible { outline-color: var(--glow); }
+
+.wrap {
+  width: 100%; max-width: 1180px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+section { scroll-margin-top: 84px; }
+.eyebrow {
+  font: 500 12px/1.4 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+}
+.band-dark .eyebrow, .hero .eyebrow, .contact .eyebrow { color: var(--glow); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 10px 20px; border-radius: 6px; border: 1.5px solid transparent;
+  font: 600 15px/1.2 var(--body); text-decoration: none; cursor: pointer; text-align: center;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-solid { background: var(--cta); color: var(--cta-fg); }
+.btn-solid:hover { filter: brightness(1.08); }
+.btn-glow { background: var(--glow); color: var(--glow-fg); }
+.btn-glow:hover { filter: brightness(1.06); }
+.btn-line { background: transparent; border-color: var(--line); color: var(--fg); }
+.btn-line:hover { border-color: var(--accent); }
+.btn-ghost-dark { background: transparent; border-color: var(--hero-line); color: var(--hero-fg); }
+.btn-ghost-dark:hover { border-color: var(--glow); }
+.btn[aria-disabled="true"] { opacity: .55; }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: var(--hero-bg); color: var(--hero-fg); border-bottom: 1px solid var(--hero-line);
+}
+.site-header .bar { display: flex; align-items: center; gap: 24px; min-height: 64px; padding-block: 8px; }
+.brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1.1; margin-right: auto; }
+.brand-name { font: 700 24px/1 var(--display); letter-spacing: -0.03em; }
+.brand-sub { font: 500 10.5px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--hero-muted); }
+.nav { display: flex; gap: 22px; }
+.nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--hero-muted); padding: 8px 0; }
+.nav a:hover { color: var(--hero-fg); }
+@media (max-width: 780px) { .nav { display: none; } }
+
+/* Hero */
+.hero {
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(240,176,58,.20), transparent 62%),
+    radial-gradient(50% 70% at 0% 100%, rgba(150,60,140,.22), transparent 60%),
+    var(--hero-bg);
+  color: var(--hero-fg);
+}
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(28px, 5vw, 64px);
+  align-items: center; padding-block: clamp(36px, 6vw, 72px);
+}
+.hero h1 { font-size: clamp(2.5rem, 6.4vw, 4.7rem); font-weight: 700; line-height: 1.0; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--glow); }
+.lede { margin-top: 18px; max-width: 46ch; font-size: 1.125rem; color: var(--hero-muted); }
+.quick {
+  margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;
+  padding: 14px; border: 1px solid var(--hero-line); border-radius: 8px; background: rgba(255,255,255,.04);
+  color-scheme: dark;
+}
+.quick label { display: grid; gap: 4px; font: 500 11px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--hero-muted); min-width: 0; }
+.quick input, .quick select {
+  width: 100%; min-height: 44px; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--hero-line);
+  background: var(--hero-field); color: var(--hero-fg); font-size: 16px; text-transform: none; letter-spacing: 0; font-family: var(--body);
+}
+.quick .btn { grid-column: 1 / -1; }
+.hero-points { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--hero-muted); font-size: 14px; }
+.hero-points li::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--glow); }
+.hero-photo { position: relative; margin: 0; min-width: 0; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
+.hero-photo figcaption {
+  position: absolute; left: 12px; bottom: 12px; padding: 8px 12px; border-radius: 4px;
+  background: rgba(20,10,24,.82); color: var(--hero-fg); font: 500 13px/1.3 var(--mono);
+}
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .quick { grid-template-columns: 1fr 1fr; } .quick label:first-child { grid-column: 1 / -1; } }
+
+/* Section scaffolding */
+.block { padding-block: clamp(56px, 8vw, 104px); }
+.block-head { display: grid; gap: 12px; margin-bottom: 36px; max-width: 60ch; }
+.block-head h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; line-height: 1.05; }
+.block-head p { color: var(--muted); font-size: 1.0625rem; }
+
+/* Rooms */
+.rooms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.room { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; min-width: 0; }
+.room:first-child { grid-column: span 2; }
+.room-media { position: relative; flex: 1; min-height: 250px; background: var(--surface-2); }
+.room:first-child .room-media { min-height: 300px; }
+.room-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.room-body { display: grid; gap: 10px; padding: 18px 18px 20px; }
+.room-body h3 { font-size: 1.4rem; font-weight: 700; }
+.room-body p { color: var(--muted); font-size: 15px; }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.tags li { font: 500 12px/1 var(--mono); padding: 6px 8px; border-radius: 4px; background: var(--surface-2); color: var(--fg); }
+.room-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+.rate { font: 500 14px/1.3 var(--mono); color: var(--felt); }
+@media (max-width: 899px) { .rooms { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .rooms { grid-template-columns: 1fr; } .room:first-child { grid-column: auto; } .room:first-child .room-media { min-height: 250px; } }
+
+/* Facilities */
+.band-alt { background: var(--surface); border-block: 1px solid var(--line); }
+.fac-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.fac-list { margin: 0; }
+.fac-row { display: grid; grid-template-columns: minmax(130px, 190px) 1fr; gap: 6px 20px; padding: 16px 0; border-top: 1px solid var(--line); }
+.fac-row:last-child { border-bottom: 1px solid var(--line); }
+.fac-row dt { font: 700 1.05rem/1.3 var(--display); }
+.fac-row dd { margin: 0; color: var(--muted); }
+.fac-photos { display: grid; gap: 16px; }
+.fac-photos figure { margin: 0; position: relative; }
+.fac-photos img { width: 100%; border-radius: 6px; object-fit: cover; }
+.fac-photos .tall img { aspect-ratio: 4 / 5; object-position: center 40%; }
+.fac-photos .wide img { aspect-ratio: 4 / 3; }
+.fac-photos figcaption, .tile figcaption {
+  position: absolute; left: 10px; bottom: 10px; padding: 6px 10px; border-radius: 4px;
+  background: rgba(20,10,24,.82); color: #f6eef7; font: 500 12px/1.3 var(--mono);
+}
+@media (max-width: 860px) { .fac-grid { grid-template-columns: 1fr; } .fac-row { grid-template-columns: 1fr; } }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tile { position: relative; margin: 0; }
+.tile button { display: block; width: 100%; padding: 0; border: 0; background: var(--surface-2); border-radius: 6px; overflow: hidden; cursor: zoom-in; }
+.tile img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .35s ease; }
+.tile button:hover img { transform: scale(1.04); }
+@media (max-width: 900px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .tile figcaption { display: none; } }
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; display: grid; grid-template-rows: 1fr auto; gap: 12px;
+  background: rgba(14,7,18,.94); color: #f6eef7;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.lightbox img { max-width: 100%; max-height: 100%; margin: auto; object-fit: contain; border-radius: 4px; min-height: 0; }
+.lb-stage { min-height: 0; display: grid; }
+.lb-bar { display: flex; align-items: center; gap: 12px; justify-content: space-between; flex-wrap: wrap; }
+.lb-bar p { font: 500 13px/1.4 var(--mono); }
+.lb-bar div { display: flex; gap: 8px; }
+.lb-bar button { min-width: 46px; min-height: 46px; border-radius: 6px; border: 1px solid #5a4663; background: #2b1a31; color: #f6eef7; cursor: pointer; font-size: 18px; }
+.lb-bar button:hover { border-color: var(--glow); }
+
+/* Booking */
+.book { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; }
+.book-card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: clamp(18px, 3vw, 32px); min-width: 0; scroll-margin-top: 84px; }
+.stepper { list-style: none; margin: 0 0 26px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.stepper button {
+  width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 6px; background: transparent; cursor: pointer; min-height: 48px;
+}
+.stepper button:disabled { cursor: default; opacity: .55; }
+.stepper .n { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 500 13px/1 var(--mono); background: var(--surface-2); }
+.stepper .t { font-weight: 600; font-size: 14px; min-width: 0; }
+.stepper li.on button { border-color: var(--accent); background: var(--surface-2); }
+.stepper li.on .n { background: var(--cta); color: var(--cta-fg); }
+.stepper li.done .n { background: var(--felt); color: #fff; }
+@media (max-width: 520px) { .stepper .t { font-size: 12.5px; } .stepper button { padding: 8px; gap: 6px; } }
+
+.panel h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+.panel .sub { color: var(--muted); margin-bottom: 20px; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.field { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.field.full { grid-column: 1 / -1; }
+.field > label, .legend { font: 600 13px/1.3 var(--body); color: var(--muted); }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 46px; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--bg); font-size: 16px;
+}
+.field textarea { min-height: 96px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.hint { font-size: 13px; color: var(--muted); }
+.nights { font: 500 13px/1.4 var(--mono); color: var(--felt); }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
+.check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); }
+@media (max-width: 560px) { .fields { grid-template-columns: 1fr; } }
+
+.choices { display: grid; gap: 10px; }
+.choice { position: relative; display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.choice-body {
+  display: flex; align-items: center; gap: 14px; padding: 10px 14px 10px 10px; border: 1.5px solid var(--line);
+  border-radius: 8px; background: var(--bg); transition: border-color .15s ease, background-color .15s ease;
+}
+.choice:hover .choice-body { border-color: var(--accent); }
+.choice input:checked + .choice-body { border-color: var(--accent); background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--accent); }
+.choice input:focus-visible + .choice-body { outline: 3px solid var(--accent); outline-offset: 2px; }
+.choice .thumb { flex: none; width: 64px; height: 64px; border-radius: 6px; object-fit: cover; background: var(--surface-2); }
+.choice .chip { flex: none; width: 64px; height: 64px; border-radius: 6px; display: grid; place-items: center; background: var(--surface-2); font: 500 13px/1.1 var(--mono); text-align: center; }
+.choice input:checked + .choice-body .chip { background: var(--cta); color: var(--cta-fg); }
+.choice .ct { display: grid; gap: 2px; min-width: 0; }
+.choice .ct strong { font: 700 1.02rem/1.25 var(--display); }
+.choice .ct span { font-size: 14px; color: var(--muted); }
+.choice .ct .mono { font: 500 13px/1.4 var(--mono); color: var(--felt); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.actions .grow { margin-left: auto; }
+.err { margin-top: 14px; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--danger); color: var(--danger); font-size: 14px; font-weight: 500; }
+.note { margin-top: 16px; padding: 12px 14px; border-radius: 6px; background: var(--surface-2); font-size: 14px; color: var(--fg); }
+.preview { width: 100%; margin-top: 14px; min-height: 190px; padding: 12px; border-radius: 6px; border: 1px dashed var(--line); background: var(--bg); font: 400 13px/1.55 var(--mono); resize: vertical; }
+
+.summary { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); background: var(--hero-bg); color: var(--hero-fg); border-radius: 8px; padding: 22px; min-width: 0; }
+.summary h3 { font-size: 1.25rem; font-weight: 700; }
+.summary dl { margin: 16px 0 0; display: grid; gap: 0; }
+.summary .r { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-top: 1px solid var(--hero-line); }
+.summary dt { font: 500 11px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--hero-muted); }
+.summary dd { margin: 0; font: 500 14px/1.45 var(--mono); overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.summary .fine { margin-top: 14px; font-size: 13px; color: var(--hero-muted); }
+@media (max-width: 960px) { .book { grid-template-columns: 1fr; } .summary { position: static; } }
+
+/* Contact */
+.contact { background: var(--hero-bg); color: var(--hero-fg); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.contact h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; line-height: 1.05; margin-top: 12px; }
+.contact .phone { display: block; margin-top: 22px; font: 700 clamp(2.2rem, 7vw, 4rem)/1 var(--display); letter-spacing: -0.03em; color: var(--glow); user-select: all; }
+.contact p.sub { margin-top: 14px; color: var(--hero-muted); max-width: 46ch; }
+.contact .actions { margin-top: 22px; }
+.contact-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 6px; }
+.contact-photos .landscape { grid-column: 1 / -1; }
+.contact-photos .landscape img { aspect-ratio: 16 / 9; }
+footer { padding-block: 22px; border-top: 1px solid var(--hero-line); color: var(--hero-muted); font-size: 13px; }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+
+<div id="top"></div>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Embogo Guest House, back to top">
+      <span class="brand-name">EMBOGO</span>
+      <span class="brand-sub">MOTEL · Bar · Massage</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#rooms">Rooms</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-glow" href="#book">Book now</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Embogo Motel- Lugala, Bar and Massage</p>
+        <h1 id="h-hero">Rest well.<br><em>Stay for the evening.</em></h1>
+        <p class="lede">Comfortable rooms, a stocked bar, a pool table and parking inside a walled compound. Book in a few taps and reception confirms with you on WhatsApp.</p>
+
+        <form class="quick" id="quick" novalidate aria-label="Start a booking">
+          <label for="qIn">Check-in<input type="date" id="qIn"></label>
+          <label for="qOut">Check-out<input type="date" id="qOut"></label>
+          <label for="qGuests">Guests<select id="qGuests"></select></label>
+          <button class="btn btn-glow" type="submit">See rooms and book</button>
+        </form>
+
+        <ul class="hero-points">
+          <li>Bar and lounge</li>
+          <li>Massage on site</li>
+          <li>Secure parking</li>
+        </ul>
+      </div>
+      <figure class="hero-photo">
+        <img src="img/sign.jpg" width="1000" height="750" alt="The Embogo Guest House, Bar and Massage sign lit with warm string lights at dusk" fetchpriority="high">
+        <figcaption>Call or WhatsApp 0779904035/0703888792</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="rooms" aria-labelledby="h-rooms">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Rooms</p>
+        <h2 id="h-rooms">Choose your room</h2>
+        <p>Every bed is made up and ready. Pick the one you like and reception confirms it is free for your dates.</p>
+      </div>
+      <div class="rooms" id="roomsGrid"></div>
+    </div>
+  </section>
+
+  <section class="block band-alt" id="facilities" aria-labelledby="h-fac">
+    <div class="wrap fac-grid">
+      <div>
+        <div class="block-head">
+          <p class="eyebrow">Facilities</p>
+          <h2 id="h-fac">Everything on one compound</h2>
+          <p>Sleep, shower, eat out of the sun and have a drink and relax you aint stressing over this harsh world.</p>
+        </div>
+        <dl class="fac-list">
+          <div class="fac-row"><dt>Hot showers</dt><dd>Bathrooms with a wall-mounted instant water heater, a basin and a toilet.</dd></div>
+          <div class="fac-row"><dt>Mosquito nets</dt><dd>Net-covered beds in rooms. Ask for one when you book if not found.</dd></div>
+          <div class="fac-row"><dt>The bar</dt><dd>A stocked counter with beer, spirits, soft drinks and bottled water.</dd></div>
+          <div class="fac-row"><dt>Pool table</dt><dd>A pool table on the covered patio, with seating all around it.</dd></div>
+          <div class="fac-row"><dt>Lounge and TV</dt><dd>Shaded seating around a wall-mounted TV for match nights and the news.</dd></div>
+          <div class="fac-row"><dt>Parking and security</dt><dd>A walled compound with razor wire along the wall and space for parked vehicles.</dd></div>
+          <div class="fac-row"><dt>Reception</dt><dd>A front desk at the entrance with a waiting area for arrivals.</dd></div>
+          <div class="fac-row"><dt>Massage</dt><dd>Listed on our sign. Ask reception about sessions and rates.</dd></div>
+        </dl>
+      </div>
+      <div class="fac-photos">
+        <figure class="tall"><img src="img/bar.jpg" width="750" height="1000" alt="Wooden bar shelves stocked with bottled water, spirits, soft drinks and beer" loading="lazy" decoding="async"><figcaption>The bar</figcaption></figure>
+        <figure class="wide"><img src="img/lounge.jpg" width="1000" height="750" alt="Pool table on the covered patio with red cushioned sofas and wicker tables behind it" loading="lazy" decoding="async"><figcaption>Pool table and lounge</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="gallery" aria-labelledby="h-gal">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Gallery</p>
+        <h2 id="h-gal">Look around first</h2>
+        <p>Tap any photo view.</p>
+      </div>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section class="block band-alt" id="book" aria-labelledby="h-book">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Book a room</p>
+        <h2 id="h-book">Reserve in three steps</h2>
+        <p>Tell us when you are coming, who you are and how you plan to pay. Your request goes to reception on WhatsApp and the room is yours once they reply.</p>
+      </div>
+
+      <div class="book">
+        <div class="book-card" id="bookCard">
+          <ol class="stepper" id="stepper">
+            <li data-i="1"><button type="button" data-go="1"><span class="n">1</span><span class="t">Your stay</span></button></li>
+            <li data-i="2"><button type="button" data-go="2"><span class="n">2</span><span class="t">Your details</span></button></li>
+            <li data-i="3"><button type="button" data-go="3"><span class="n">3</span><span class="t">Payment</span></button></li>
+          </ol>
+
+          <form id="bookForm" novalidate>
+            <!-- Step 1 -->
+            <div class="panel" id="p1">
+              <h3>When are you staying?</h3>
+              <p class="sub">Choose your dates, then the room you want.</p>
+              <div class="fields">
+                <div class="field"><label for="checkIn">Check-in</label><input type="date" id="checkIn"></div>
+                <div class="field"><label for="checkOut">Check-out</label><input type="date" id="checkOut"></div>
+                <div class="field"><label for="guests">Guests</label><select id="guests"></select></div>
+                <div class="field"><label for="roomsQty">Number of rooms</label><select id="roomsQty"></select></div>
+                <div class="field full"><span class="nights" id="nightsLine" aria-live="polite"></span></div>
+              </div>
+              <div class="field full" style="margin-top:20px">
+                <span class="legend" id="roomLegend">Room</span>
+                <div class="choices" id="roomChoices" role="radiogroup" aria-labelledby="roomLegend"></div>
+              </div>
+              <div class="err" id="err1" role="alert" hidden></div>
+              <div class="actions"><button class="btn btn-solid grow" type="button" id="to2">Continue to your details</button></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="panel" id="p2" hidden>
+              <h3>Who is checking in?</h3>
+              <p class="sub">Reception uses these details to confirm your room.</p>
+              <div class="fields">
+                <div class="field"><label for="gName">Full name</label><input type="text" id="gName" autocomplete="name"></div>
+                <div class="field"><label for="gPhone">Phone or WhatsApp number</label><input type="tel" id="gPhone" autocomplete="tel" inputmode="tel" placeholder="0700 000 000"></div>
+                <div class="field"><label for="gEmail">Email (optional)</label><input type="email" id="gEmail" autocomplete="email"></div>
+                <div class="field"><label for="gArrival">Expected arrival time (optional)</label><input type="time" id="gArrival"></div>
+                <div class="field full"><label for="gNotes">Anything we should know (optional)</label><textarea id="gNotes" placeholder="Late arrival, mosquito net, extra towels"></textarea></div>
+                <div class="field full"><label class="check" for="gMassage"><input type="checkbox" id="gMassage"><span>I am also interested in a massage session</span></label></div>
+              </div>
+              <div class="err" id="err2" role="alert" hidden></div>
+              <div class="actions">
+                <button class="btn btn-line" type="button" data-go="1">Back</button>
+                <button class="btn btn-solid grow" type="button" id="to3">Continue to payment</button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="panel" id="p3" hidden>
+              <h3>How will you pay?</h3>
+              <p class="sub">Pick the method you prefer. No money is taken on this website.</p>
+              <div class="choices" id="payChoices" role="radiogroup" aria-label="Payment method"></div>
+
+              <div class="note">Reception confirms your room and shares the payment details on WhatsApp. Your booking is confirmed once they reply.</div>
+              <label class="legend" for="msgPreview" style="display:block;margin-top:20px">Your booking message</label>
+              <textarea class="preview" id="msgPreview" readonly></textarea>
+
+              <div class="err" id="err3" role="alert" hidden></div>
+              <div class="note" id="sentNote" hidden>If WhatsApp did not open, tap Copy booking details and send the message to 0779904035-bwikizoc@gmail.com.</div>
+              <div class="actions">
+                <button class="btn btn-line" type="button" data-go="2">Back</button>
+                <button class="btn btn-line" type="button" id="copyBtn">Copy booking details</button>
+                <a class="btn btn-solid grow" id="waSend" href="#book" target="_blank" rel="noopener">Send booking on WhatsApp</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="summary" aria-label="Your booking summary">
+          <p class="eyebrow">Your booking</p>
+          <h3>Stay summary</h3>
+          <dl id="sumList"></dl>
+          <p class="fine">Prices and availability are confirmed by reception before you pay.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="h-contact">
+    <div class="wrap block contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="h-contact">Call or message reception</h2>
+        <span class="phone">077904035</span>
+        <p class="sub">Ask about rates, directions, massage sessions or a late check-in. We reply on WhatsApp.</p>
+        <div class="actions">
+          <a class="btn btn-glow" id="waChat" href="https://wa.me/256779904035" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a class="btn btn-ghost-dark" href="tel:+256779904035">Call 0703888792</a>
+        </div>
+      </div>
+      <div class="contact-photos">
+        <img src="img/reception.jpg" width="750" height="1000" alt="The reception doorway with blue waiting chairs and a front desk" loading="lazy" decoding="async">
+        <img src="img/bath.jpg" width="750" height="1000" alt="A tiled bathroom with a toilet, basin and wall-mounted water heater shower" loading="lazy" decoding="async">
+        <div class="landscape"><img src="img/compound.jpg" width="1000" height="750" alt="The compound driveway with a parked pickup, potted plants and a walled boundary" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+    <footer>
+      <div class="wrap">© 2026 Embogo Motel. LUGALA-KIGOBE, Bar and Massage. Bookings are confirmed by reception. No payment is taken on this website.</div>
+    </footer>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lb-stage"><img id="lbImg" alt=""></div>
+  <div class="lb-bar">
+    <p id="lbCap"></p>
+    <div>
+      <button type="button" id="lbPrev" aria-label="Previous photo">&#8592;</button>
+      <button type="button" id="lbNext" aria-label="Next photo">&#8594;</button>
+      <button type="button" id="lbClose" aria-label="Close photo viewer">&#10005;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Editable details: rates, payment info, WhatsApp number ---------- */
+const CONFIG = {
+  whatsapp: '256779904035',
+  phoneDisplay: '0779904035',
+  currency: 'UGX',
+  rooms: [
+    { id: 'plum', name: 'GIRAFFE', photo: 'img/room-plum.jpg', pos: '50% 55%', rate: 35000,
+      alt: 'Wrought-iron bed with plum tree-print bedding, a striped pillow and a folded quilt, under a curtained window',
+      blurb: 'A wrought-iron bed in deep plum bedding, with a curtained window that looks out on greenery.',
+      features: ['Wrought-iron bed', 'Curtained window', 'Tiled floor'] },
+    { id: 'amber', name: 'Massage Room', photo: 'img/room-amber.jpg', pos: '30% 60%', rate: 50000,
+      alt: 'Bed with a padded amber headboard, white sheets and a wooden shelf holding towels and toiletries',
+      blurb: 'Warm yellow walls, a padded headboard and a wooden shelf stocked with towels and toiletries.',
+      features: ['Padded headboard', 'Towel shelf', 'Tiled floor'] },
+    { id: 'sky', name: 'BUFFALO', photo: 'img/room-sky.jpg', pos: '50% 72%', rate: 50000,
+      alt: 'Bed with soft blue sheets and a red cloth at the foot, beside a bright curtained window',
+      blurb: 'Soft blue linen on a dark iron-and-wood bed, with a bright curtained window.',
+      features: ['Blue linen', 'Curtained window', 'Tiled floor'] },
+    { id: 'net', name: 'ELEPHANT', photo: 'img/room-net.jpg', pos: '50% 62%', rate: 50000,
+      alt: 'Bed under a pink canopy mosquito net with a floral pillow and folded blankets',
+      blurb: 'A canopy mosquito net over the bed, for a night undisturbed by mosquitoes.',
+      features: ['Mosquito net', 'Wrought-iron bed', 'Curtained window'] },
+    { id: 'check', name: 'TIGER', photo: 'img/room-check.jpg', pos: '50% 45%', rate: 35000,
+      alt: 'Bed with blue check sheets, a green towel and a folded blue floral quilt',
+      blurb: 'Blue check sheets with a folded quilt and a fresh towel laid out on the bed.',
+      features: ['Towel provided', 'Wrought-iron bed', 'Curtained window'] }
+  ],
+  /* Set `detail` to show payment instructions, e.g. detail: 'Send to 0779904035' */
+  payments: [
+    { id: 'mtn', tag: 'MTN MoMo', name: 'MTN Mobile Money', text: 'Pay from your MTN line once the room is confirmed.', detail: null },
+    { id: 'airtel', tag: 'Airtel', name: 'Airtel Money', text: 'Pay from your Airtel line once the room is confirmed.', detail: null },
+    { id: 'cash', tag: 'Cash', name: 'Cash at reception', text: 'Pay in Uganda shillings when you arrive.', detail: null },
+    { id: 'bank', tag: 'Bank', name: 'Bank transfer', text: 'Reception shares the account details on WhatsApp.', detail: null }
+  ]
+};
+
+const GALLERY = [
+  { src: 'img/compound.jpg', cap: 'The compound', alt: 'The compound driveway with a parked pickup, potted plants and a walled boundary' },
+  { src: 'img/room-plum.jpg', cap: 'GIRAFFE', alt: 'Wrought-iron bed with plum tree-print bedding under a curtained window' },
+  { src: 'img/room-amber.jpg', cap: 'MASSAGE ROOM', alt: 'Bed with a padded amber headboard and a wooden towel shelf' },
+  { src: 'img/room-sky.jpg', cap: 'BUFFALO', alt: 'Bed with soft blue sheets beside a bright curtained window' },
+  { src: 'img/room-net.jpg', cap: 'ELEPHANT', alt: 'Bed under a pink canopy mosquito net' },
+  { src: 'img/room-check.jpg', cap: 'TIGER', alt: 'Bed with blue check sheets, a green towel and a blue floral quilt' },
+  { src: 'img/bath.jpg', cap: 'Bathroom', alt: 'Tiled bathroom with a toilet, basin and wall-mounted water heater shower' },
+  { src: 'img/bar.jpg', cap: 'The bar', alt: 'Wooden bar shelves stocked with water, spirits, soft drinks and beer' },
+  { src: 'img/lounge.jpg', cap: 'Pool and lounge', alt: 'Pool table on the patio with red sofas and wicker tables behind' },
+  { src: 'img/lounge-tv.jpg', cap: 'Lounge and TV', alt: 'Covered patio with a pool table and a wall-mounted TV beside the bar entrance' },
+  { src: 'img/reception.jpg', cap: 'Reception', alt: 'Reception doorway with blue waiting chairs and a front desk' },
+  { src: 'img/sign.jpg', cap: 'Our sign at dusk', alt: 'The Embogo Guest House, Bar and Massage sign lit with string lights' }
+];
+
+/* ---------- Helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const pad = n => String(n).padStart(2, '0');
+const iso = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const parseISO = s => { const p = s.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); };
+const addDays = (s, n) => { const d = parseISO(s); d.setDate(d.getDate() + n); return iso(d); };
+const nightsBetween = (a, b) => Math.round((parseISO(b) - parseISO(a)) / 86400000);
+const fmtDate = s => parseISO(s).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+const money = n => CONFIG.currency + ' ' + Math.round(n).toLocaleString('en-US');
+const rateText = r => r.rate ? money(r.rate) + ' per night' : 'INBOX';
+
+const today = iso(new Date());
+const S = {
+  step: 1, maxStep: 1,
+  checkIn: today, checkOut: addDays(today, 1), guests: 2, rooms: 1, room: 'any',
+  name: '', phone: '', email: '', arrival: '', notes: '', massage: false, pay: ''
+};
+
+/* ---------- Build static lists ---------- */
+function fillSelect(sel, max, label) {
+  for (let i = 1; i <= max; i++) {
+    const o = document.createElement('option');
+    o.value = String(i); o.textContent = i + ' ' + (i === 1 ? label[0] : label[1]);
+    sel.appendChild(o);
+  }
+}
+fillSelect($('#qGuests'), 6, ['guest', 'guests']);
+fillSelect($('#guests'), 6, ['guest', 'guests']);
+fillSelect($('#roomsQty'), 4, ['room', 'rooms']);
+
+$('#roomsGrid').innerHTML = CONFIG.rooms.map(r =>
+  '<article class="room">' +
+    '<div class="room-media"><img src="' + r.photo + '" alt="' + r.alt + '" style="object-position:' + r.pos + '" loading="lazy" decoding="async"></div>' +
+    '<div class="room-body"><h3>' + r.name + '</h3><p>' + r.blurb + '</p>' +
+    '<ul class="tags">' + r.features.map(f => '<li>' + f + '</li>').join('') + '</ul>' +
+    '<div class="room-foot"><span class="rate">' + rateText(r) + '</span>' +
+    '<button class="btn btn-solid" type="button" data-room="' + r.id + '">Book this room</button></div></div>' +
+  '</article>'
+).join('');
+
+$('#galleryGrid').innerHTML = GALLERY.map((g, i) =>
+  '<figure class="tile"><button type="button" data-i="' + i + '" aria-label="Open photo: ' + g.cap + '">' +
+  '<img src="' + g.src + '" alt="' + g.alt + '" loading="lazy" decoding="async"></button>' +
+  '<figcaption>' + g.cap + '</figcaption></figure>'
+).join('');
+
+$('#roomChoices').innerHTML =
+  '<label class="choice"><input type="radio" name="room" value="any"><span class="choice-body">' +
+  '<span class="chip">Any</span><span class="ct"><strong>Any available room</strong><span>Reception picks the best free room for your dates.</span></span></span></label>' +
+  CONFIG.rooms.map(r =>
+    '<label class="choice"><input type="radio" name="room" value="' + r.id + '"><span class="choice-body">' +
+    '<img class="thumb" src="' + r.photo + '" alt="" style="object-position:' + r.pos + '" loading="lazy" decoding="async">' +
+    '<span class="ct"><strong>' + r.name + '</strong><span>' + r.features.join(' · ') + '</span><span class="mono">' + rateText(r) + '</span></span></span></label>'
+  ).join('');
+
+$('#payChoices').innerHTML = CONFIG.payments.map(p =>
+  '<label class="choice"><input type="radio" name="pay" value="' + p.id + '"><span class="choice-body">' +
+  '<span class="chip">' + p.tag + '</span><span class="ct"><strong>' + p.name + '</strong><span>' + p.text + '</span>' +
+  (p.detail ? '<span class="mono">' + p.detail + '</span>' : '') + '</span></span></label>'
+).join('');
+
+/* ---------- Inputs and state ---------- */
+const ids = ['checkIn', 'checkOut', 'guests', 'roomsQty', 'gName', 'gPhone', 'gEmail', 'gArrival', 'gNotes'];
+function syncInputs() {
+  $('#checkIn').value = S.checkIn; $('#checkOut').value = S.checkOut;
+  $('#guests').value = String(S.guests); $('#roomsQty').value = String(S.rooms);
+  $('#gName').value = S.name; $('#gPhone').value = S.phone; $('#gEmail').value = S.email;
+  $('#gArrival').value = S.arrival; $('#gNotes').value = S.notes; $('#gMassage').checked = S.massage;
+  $$('input[name="room"]').forEach(i => { i.checked = i.value === S.room; });
+  $$('input[name="pay"]').forEach(i => { i.checked = i.value === S.pay; });
+  $('#checkIn').min = today; $('#checkOut').min = addDays(S.checkIn || today, 1);
+  $('#qIn').value = S.checkIn; $('#qOut').value = S.checkOut; $('#qGuests').value = String(S.guests);
+  $('#qIn').min = today; $('#qOut').min = addDays(S.checkIn || today, 1);
+}
+
+const selRoom = () => CONFIG.rooms.find(r => r.id === S.room) || null;
+const selPay = () => CONFIG.payments.find(p => p.id === S.pay) || null;
+const nightsCount = () => (S.checkIn && S.checkOut) ? Math.max(0, nightsBetween(S.checkIn, S.checkOut)) : 0;
+const plural = (n, a, b) => n + ' ' + (n === 1 ? a : b);
+
+function totalText() {
+  const r = selRoom(), n = nightsCount();
+  if (r && r.rate && n > 0) return money(r.rate * n * S.rooms);
+  return 'Confirmed by reception';
+}
+
+function buildMessage() {
+  const r = selRoom(), p = selPay(), n = nightsCount();
+  const lines = [
+    'Hello Embogo Guest House, I would like to book a room.',
+    '',
+    'Room: ' + (r ? r.name : 'Any available room') + ' x ' + S.rooms,
+    'Check-in: ' + (S.checkIn ? fmtDate(S.checkIn) : '-'),
+    'Check-out: ' + (S.checkOut ? fmtDate(S.checkOut) : '-') + (n ? ' (' + plural(n, 'night', 'nights') + ')' : ''),
+    'Guests: ' + S.guests,
+    'Name: ' + (S.name.trim() || '-'),
+    'Phone: ' + (S.phone.trim() || '-')
+  ];
+  if (S.email.trim()) lines.push('Email: ' + S.email.trim());
+  if (S.arrival) lines.push('Expected arrival: ' + S.arrival);
+  if (S.massage) lines.push('Also interested in: massage session');
+  if (S.notes.trim()) lines.push('Notes: ' + S.notes.trim());
+  lines.push('Payment method: ' + (p ? p.name : 'not chosen yet'));
+  lines.push('');
+  lines.push('Please confirm availability and the total. Thank you.');
+  return lines.join('\n');
+}
+
+function row(label, value) {
+  const wrap = document.createElement('div'); wrap.className = 'r';
+  const dt = document.createElement('dt'); dt.textContent = label;
+  const dd = document.createElement('dd'); dd.textContent = value;
+  wrap.appendChild(dt); wrap.appendChild(dd); return wrap;
+}
+
+function render() {
+  const r = selRoom(), p = selPay(), n = nightsCount();
+  const list = $('#sumList'); list.textContent = '';
+  list.appendChild(row('Room', (r ? r.name : 'Any available room') + ' x ' + S.rooms));
+  list.appendChild(row('Check-in', S.checkIn ? fmtDate(S.checkIn) : 'Choose a date'));
+  list.appendChild(row('Check-out', S.checkOut ? fmtDate(S.checkOut) : 'Choose a date'));
+  list.appendChild(row('Stay', n ? plural(n, 'night', 'nights') : 'Check your dates'));
+  list.appendChild(row('Guests', String(S.guests)));
+  if (S.name.trim()) list.appendChild(row('Name', S.name.trim()));
+  list.appendChild(row('Payment', p ? p.name : 'Choose in step 3'));
+  list.appendChild(row('Total', totalText()));
+
+  $('#nightsLine').textContent = n ? plural(n, 'night', 'nights') + ' · ' + fmtDate(S.checkIn) + ' to ' + fmtDate(S.checkOut) : '';
+
+  const msg = buildMessage();
+  $('#msgPreview').value = msg;
+  $('#waSend').href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
+}
+
+/* ---------- Steps ---------- */
+function showErr(id, text) { const e = $(id); e.textContent = text; e.hidden = false; }
+function clearErr() { ['#err1', '#err2', '#err3'].forEach(i => { $(i).hidden = true; }); }
+
+function validateStay() {
+  if (!S.checkIn || !S.checkOut) return 'Choose both a check-in and a check-out date.';
+  if (S.checkIn < today) return 'Check-in cannot be in the past.';
+  if (nightsBetween(S.checkIn, S.checkOut) < 1) return 'Check-out must be at least one day after check-in.';
+  return '';
+}
+function validateGuest() {
+  if (S.name.trim().length < 2) return 'Enter your full name.';
+  if (S.phone.replace(/\D/g, '').length < 9) return 'Enter a phone number with at least 9 digits so reception can reach you.';
+  return '';
+}
+
+function goStep(n, scroll) {
+  S.step = n; S.maxStep = Math.max(S.maxStep, n); clearErr();
+  [1, 2, 3].forEach(i => { $('#p' + i).hidden = i !== n; });
+  $$('#stepper li').forEach(li => {
+    const i = Number(li.dataset.i);
+    li.classList.toggle('on', i === n);
+    li.classList.toggle('done', i < n);
+    li.querySelector('.n').textContent = i < n ? '✓' : String(i);
+    li.querySelector('button').disabled = i > S.maxStep;
+  });
+  render();
+  if (scroll) $('#bookCard').scrollIntoView({ block: 'start' });
+}
+
+$('#stepper').addEventListener('click', e => {
+  const b = e.target.closest('button[data-go]'); if (!b || b.disabled) return;
+  goStep(Number(b.dataset.go), true);
+});
+$$('#bookForm [data-go]').forEach(b => b.addEventListener('click', () => goStep(Number(b.dataset.go), true)));
+$('#bookForm').addEventListener('submit', e => e.preventDefault());
+
+$('#to2').addEventListener('click', () => {
+  const m = validateStay();
+  if (m) { showErr('#err1', m); return; }
+  goStep(2, true);
+});
+$('#to3').addEventListener('click', () => {
+  const m = validateGuest();
+  if (m) { showErr('#err2', m); return; }
+  goStep(3, true);
+});
+
+ids.forEach(id => {
+  $('#' + id).addEventListener('input', () => {
+    S.checkIn = $('#checkIn').value; S.checkOut = $('#checkOut').value;
+    S.guests = Number($('#guests').value); S.rooms = Number($('#roomsQty').value);
+    S.name = $('#gName').value; S.phone = $('#gPhone').value; S.email = $('#gEmail').value;
+    S.arrival = $('#gArrival').value; S.notes = $('#gNotes').value;
+    if (S.checkIn && (!S.checkOut || S.checkOut <= S.checkIn) && (id === 'checkIn')) S.checkOut = addDays(S.checkIn, 1);
+    if (id === 'checkIn') { $('#checkOut').value = S.checkOut; }
+    $('#checkOut').min = addDays(S.checkIn || today, 1);
+    render();
+  });
+});
+$('#gMassage').addEventListener('change', () => { S.massage = $('#gMassage').checked; render(); });
+$$('input[name="room"]').forEach(i => i.addEventListener('change', () => { S.room = i.value; render(); }));
+$$('input[name="pay"]').forEach(i => i.addEventListener('change', () => { S.pay = i.value; $('#err3').hidden = true; render(); }));
+
+/* ---------- Hero quick bar, room buttons ---------- */
+$('#qIn').addEventListener('input', () => {
+  if ($('#qIn').value && $('#qOut').value <= $('#qIn').value) $('#qOut').value = addDays($('#qIn').value, 1);
+  $('#qOut').min = addDays($('#qIn').value || today, 1);
+});
+$('#quick').addEventListener('submit', e => {
+  e.preventDefault();
+  S.checkIn = $('#qIn').value || today;
+  S.checkOut = $('#qOut').value;
+  if (!S.checkOut || S.checkOut <= S.checkIn) S.checkOut = addDays(S.checkIn, 1);
+  S.guests = Number($('#qGuests').value);
+  syncInputs(); goStep(1, false); render();
+  $('#book').scrollIntoView({ block: 'start' });
+});
+$('#roomsGrid').addEventListener('click', e => {
+  const b = e.target.closest('button[data-room]'); if (!b) return;
+  S.room = b.dataset.room; syncInputs(); goStep(1, false); render();
+  $('#book').scrollIntoView({ block: 'start' });
+});
+
+/* ---------- Send and copy ---------- */
+$('#waSend').addEventListener('click', e => {
+  const m1 = validateStay(), m2 = validateGuest();
+  if (m1) { e.preventDefault(); goStep(1, true); showErr('#err1', m1); return; }
+  if (m2) { e.preventDefault(); goStep(2, true); showErr('#err2', m2); return; }
+  if (!S.pay) { e.preventDefault(); showErr('#err3', 'Choose a payment method first.'); return; }
+  $('#sentNote').hidden = false;
+});
+$('#copyBtn').addEventListener('click', () => {
+  const ta = $('#msgPreview'); const btn = $('#copyBtn');
+  const done = () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = 'Copy booking details'; }, 2000); };
+  const fallback = () => { ta.focus(); ta.select(); try { if (document.execCommand('copy')) done(); } catch (err) { /* text stays selected for manual copy */ } };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done, fallback);
+  else fallback();
+});
+
+/* ---------- Lightbox ---------- */
+const lb = $('#lightbox'); let lbIndex = 0, lbOpener = null;
+function showLb() {
+  const g = GALLERY[lbIndex];
+  $('#lbImg').src = g.src; $('#lbImg').alt = g.alt;
+  $('#lbCap').textContent = g.cap + '  (' + (lbIndex + 1) + ' of ' + GALLERY.length + ')';
+}
+function openLb(i, opener) { lbIndex = i; lbOpener = opener; showLb(); lb.hidden = false; document.documentElement.style.overflow = 'hidden'; $('#lbClose').focus(); }
+function closeLb() { lb.hidden = true; document.documentElement.style.overflow = ''; if (lbOpener) lbOpener.focus(); }
+function stepLb(d) { lbIndex = (lbIndex + d + GALLERY.length) % GALLERY.length; showLb(); }
+$('#galleryGrid').addEventListener('click', e => {
+  const b = e.target.closest('button[data-i]'); if (b) openLb(Number(b.dataset.i), b);
+});
+$('#lbClose').addEventListener('click', closeLb);
+$('#lbPrev').addEventListener('click', () => stepLb(-1));
+$('#lbNext').addEventListener('click', () => stepLb(1));
+lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-stage')) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') closeLb();
+  else if (e.key === 'ArrowLeft') stepLb(-1);
+  else if (e.key === 'ArrowRight') stepLb(1);
+  else if (e.key === 'Tab') {
+    const f = [$('#lbPrev'), $('#lbNext'), $('#lbClose')], i = f.indexOf(document.activeElement);
+    e.preventDefault();
+    f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+  }
+});
+
+/* ---------- Start ---------- */
+syncInputs();
+goStep(1, false);
+</script>
+
+</body></html>
